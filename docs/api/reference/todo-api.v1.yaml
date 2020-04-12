@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: todo-api
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /api/note:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/note.v1.yaml
+      operationId: get-api-note
+    post:
+      summary: ''
+      operationId: post-api-note
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/note.v1.yaml
+  '/api/note/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/note.v1.yaml
+        '404':
+          description: Not Found
+      operationId: get-api-note-id
+    delete:
+      summary: ''
+      operationId: delete-api-note-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+components:
+  schemas: {}
